@@ -201,11 +201,9 @@ const Home = () => {
                   '0 0 40px #00FF88, 0 0 80px #00FF88, 0 0 120px #00FF88',
                   '0 0 20px #00FF88, 0 0 40px #00FF88, 0 0 60px #00FF88',
                 ],
-                rotate: [0, 360],
               }}
               transition={{
                 boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
               }}
             />
           </motion.div>

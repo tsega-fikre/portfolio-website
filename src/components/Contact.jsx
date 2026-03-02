@@ -175,13 +175,13 @@ const Contact = () => {
             animate={isInView ? { y: 0 } : {}}
             className="relative inline-block text-4xl md:text-5xl font-bold text-cyber-green"
           >
-            Get In Touch
+            Contact
             <motion.span
               className="absolute inset-0 text-cyber-green/50"
               animate={{ x: [-2, 2, -2], opacity: [0.3, 0.6, 0.3] }}
               transition={{ duration: 0.2, repeat: Infinity }}
             >
-              Get In Touch
+              Contact
             </motion.span>
           </motion.h2>
           <motion.p
@@ -190,7 +190,7 @@ const Contact = () => {
             transition={{ delay: 0.2 }}
             className="text-gray-400 mt-4"
           >
-            Have a question or want to work together? I'd love to hear from you.
+            Send me a message
           </motion.p>
         </div>
 
