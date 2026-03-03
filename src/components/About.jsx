@@ -258,44 +258,7 @@ const About = () => {
               ))}
             </motion.div>
 
-            {/* Call-to-action button - Glowing Download Resume */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ delay: 1.1 }}
-              className="pt-6"
-            >
-              <motion.a
-                href="/resume.pdf"
-                download
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyber-green to-green-400 text-black font-bold rounded-lg overflow-hidden group relative"
-                animate={{
-                  boxShadow: [
-                    '0 0 15px rgba(0, 255, 136, 0.5), 0 0 30px rgba(0, 255, 136, 0.3)',
-                    '0 0 25px rgba(0, 255, 136, 0.7), 0 0 50px rgba(0, 255, 136, 0.5)',
-                    '0 0 15px rgba(0, 255, 136, 0.5), 0 0 30px rgba(0, 255, 136, 0.3)',
-                  ],
-                }}
-                transition={{
-                  boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                }}
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                  </svg>
-                  Download Resume
-                </span>
-                <motion.div
-                  className="absolute inset-0 bg-white/20"
-                  initial={{ x: '-100%' }}
-                  whileHover={{ x: '100%' }}
-                  transition={{ duration: 0.5 }}
-                />
-              </motion.a>
-            </motion.div>
+
           </div>
         </div>
       </motion.div>

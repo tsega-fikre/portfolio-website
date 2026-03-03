@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import About from './components/About'
@@ -8,10 +9,8 @@ import ProjectsGallery from './components/ProjectsGallery'
 import AllProjectsPage from './components/AllProjectsPage'
 import ProjectDetail from './components/ProjectDetail'
 import Certificates from './components/Certificates'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import MatrixRain from './components/MatrixRain'
-import DocumentOrder from './components/DocumentOrder'
 import { validateConfig } from './utils/config'
 
 function App() {
@@ -73,7 +72,6 @@ function App() {
                 <Skills />
                 <ProjectsGallery showViewAll={true} limit={4} />
                 <Certificates />
-                <Contact />
                 <Footer />
               </>
             } />
@@ -98,9 +96,43 @@ function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
-        
-        {/* Security and Feature Components */}
-        <DocumentOrder />
+
+        {/* Fixed Download Resume Button - Bottom Left */}
+        <motion.a
+          href="/certificates/resume.pdf"
+          download="resume.pdf"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="fixed bottom-6 left-6 z-50 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyber-green to-green-400 text-black font-bold rounded-lg overflow-hidden group"
+          animate={{
+            boxShadow: [
+              '0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3)',
+              '0 0 15px rgba(0, 255, 136, 0.6), 0 0 30px rgba(0, 255, 136, 0.4)',
+              '0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3)',
+            ],
+          }}
+          transition={{
+            boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+          }}
+        >
+          <span className="relative z-10 flex items-center gap-2">
+            <svg 
+              className="w-5 h-5" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download Resume
+          </span>
+          <motion.div
+            className="absolute inset-0 bg-white/20"
+            initial={{ x: '-100%' }}
+            whileHover={{ x: '100%' }}
+            transition={{ duration: 0.5 }}
+          />
+        </motion.a>
       </div>
     </BrowserRouter>
   )

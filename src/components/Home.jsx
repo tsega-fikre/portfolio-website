@@ -1,25 +1,5 @@
-import { motion, useCycle, AnimatePresence } from 'framer-motion'
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Sphere, MeshDistortMaterial, Stars } from '@react-three/drei'
-import { useState, useEffect, useRef } from 'react'
-
-const AnimatedSphere = () => {
-  return (
-    <>
-      <Sphere visible args={[1, 100, 200]} scale={2.5}>
-        <MeshDistortMaterial
-          color="#00FF88"
-          attach="material"
-          distort={0.5}
-          speed={2}
-          roughness={0.2}
-          metalness={0.8}
-        />
-      </Sphere>
-      <Stars radius={100} depth={50} count={1000} factor={4} saturation={0} fade speed={1} />
-    </>
-  )
-}
+import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 const Home = () => {
   // Typing animation roles
@@ -129,15 +109,15 @@ const Home = () => {
       {/* Subtle dark overlay */}
       <div className="absolute inset-0 bg-black/60" />
       
-      {/* Animated particles / orbs */}
+      {/* Simplified animated particles - reduced from 20 to 8 */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-cyber-green/30 rounded-full"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
               scale: Math.random() * 0.5 + 0.5,
             }}
             animate={{
@@ -154,16 +134,10 @@ const Home = () => {
         ))}
       </div>
 
-      {/* 3D Sphere with scanline effect */}
-      <div className="absolute inset-0 opacity-40">
-        <Canvas>
-          <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1.5} />
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[2, 2, 2]} />
-          <AnimatedSphere />
-        </Canvas>
-        <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-cyber-dark pointer-events-none" />
-        <div className="absolute inset-0 bg-scanline pointer-events-none" />
+      {/* Simplified gradient background - removed heavy 3D Canvas */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-cyber-dark" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyber-green/10 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
@@ -172,59 +146,28 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Profile Image with enhanced glow */}
+          {/* Profile Image with simplified glow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             className="mb-8 flex justify-center relative"
           >
-            <motion.div
-              className="absolute inset-0 rounded-full bg-cyber-green/20 blur-2xl"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
             <motion.img 
               src="/portfolio.jpg" 
               alt="Tsegazeab Fikre"
-              className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-cyber-green object-cover"
-              animate={{
-                boxShadow: [
-                  '0 0 20px #00FF88, 0 0 40px #00FF88, 0 0 60px #00FF88',
-                  '0 0 40px #00FF88, 0 0 80px #00FF88, 0 0 120px #00FF88',
-                  '0 0 20px #00FF88, 0 0 40px #00FF88, 0 0 60px #00FF88',
-                ],
-              }}
-              transition={{
-                boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-              }}
+              className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-cyber-green object-cover shadow-[0_0_30px_rgba(0,255,136,0.5)]"
             />
           </motion.div>
 
-          {/* Name with glitch effect */}
+          {/* Name with simplified effect */}
           <motion.h1
             className="text-5xl md:text-7xl font-bold mb-4 relative inline-block"
-            animate={{ textShadow: ['0 0 10px #00FF88', '0 0 30px #00FF88', '0 0 10px #00FF88'] }}
-            transition={{ duration: 2, repeat: Infinity }}
           >
             <span className="relative">
               Hi, I'm{' '}
               <span className="text-cyber-green relative">
                 Tsegazeab Fikre
-                <motion.span
-                  className="absolute inset-0 text-cyber-green/50"
-                  animate={{ x: [-2, 2, -2], opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 0.2, repeat: Infinity }}
-                >
-                  Tsegazeab Fikre
-                </motion.span>
               </span>
             </span>
           </motion.h1>
@@ -286,7 +229,7 @@ const Home = () => {
             </motion.button>
           </motion.div>
 
-          {/* Social links with enhanced hover */}
+          {/* Social links */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -303,11 +246,11 @@ const Home = () => {
                 title={link.name}
                 aria-label={`Visit ${link.name} profile`}
               >
-                <div className="absolute inset-0 bg-cyber-green/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                 <img 
                   src={link.logo} 
                   alt={link.name}
                   className="relative w-10 h-10 hover:drop-shadow-[0_0_10px_#00FF88] cursor-pointer"
+                  loading="lazy"
                 />
               </motion.button>
             ))}
@@ -315,7 +258,7 @@ const Home = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator with enhanced animation */}
+      {/* Scroll Indicator */}
       <motion.div
         animate={{ y: [0, 10, 0], opacity: [0.5, 1, 0.5] }}
         transition={{ duration: 1.5, repeat: Infinity }}
@@ -329,25 +272,6 @@ const Home = () => {
           />
         </div>
       </motion.div>
-
-      {/* Add custom CSS for scanline effect */}
-      <style jsx>{`
-        .bg-scanline {
-          background: repeating-linear-gradient(
-            0deg,
-            rgba(0, 255, 136, 0.03) 0px,
-            rgba(0, 255, 136, 0.03) 2px,
-            transparent 2px,
-            transparent 4px
-          );
-          pointer-events: none;
-          animation: scan 10s linear infinite;
-        }
-        @keyframes scan {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(100%); }
-        }
-      `}</style>
     </section>
   )
 }
