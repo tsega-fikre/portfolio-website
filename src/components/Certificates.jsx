@@ -1,6 +1,5 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import LazyImage from './LazyImage'
 
 const CertificateCard = ({ cert, index, isInView }) => {
   const [hovered, setHovered] = useState(false)
@@ -28,17 +27,13 @@ const CertificateCard = ({ cert, index, isInView }) => {
 
       {/* Certificate Image */}
       <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-900 to-black">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
-          className="w-full h-full"
-        >
-          <LazyImage
-            src={cert.image}
-            alt={cert.title}
-            className="w-full h-full object-contain p-4"
-          />
-        </motion.div>
+        <img
+          src={cert.image}
+          alt={cert.title}
+          className="w-full h-full object-contain p-4 transition-transform duration-300"
+          style={{ transform: hovered ? 'scale(1.05)' : 'scale(1)' }}
+          loading="lazy"
+        />
         
         {/* Overlay with view and download icons on hover */}
         <motion.div
