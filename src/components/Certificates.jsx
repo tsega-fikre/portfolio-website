@@ -1,5 +1,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
+import LazyImage from './LazyImage'
 
 const CertificateCard = ({ cert, index, isInView }) => {
   const [hovered, setHovered] = useState(false)
@@ -27,33 +28,34 @@ const CertificateCard = ({ cert, index, isInView }) => {
 
       {/* Certificate Image */}
       <div className="relative h-64 overflow-hidden bg-gradient-to-br from-gray-900 to-black">
-        <motion.img
-          src={cert.image}
-          alt={cert.title}
-          className="w-full h-full object-contain p-4"
+        <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.3 }}
-          onError={(e) => {
-            e.target.src = `https://via.placeholder.com/400x300/0a0a0a/00FF88?text=${encodeURIComponent(cert.title)}`
-          }}
-        />
+          className="w-full h-full"
+        >
+          <LazyImage
+            src={cert.image}
+            alt={cert.title}
+            className="w-full h-full object-contain p-4"
+          />
+        </motion.div>
         
-        {/* Overlay with eye icon on hover */}
+        {/* Overlay with view and download icons on hover */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={hovered ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 bg-black/80 flex items-center justify-center"
+          className="absolute inset-0 bg-black/80 flex items-center justify-center gap-4"
         >
+          {/* View/Eye Icon */}
           <a
-            href={cert.link}
+            href={cert.viewUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="p-4 bg-cyber-green/20 backdrop-blur-sm border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all shadow-[0_0_20px_#00FF88]"
             onClick={(e) => e.stopPropagation()}
             aria-label="View certificate"
           >
-            {/* Eye icon SVG */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6 text-cyber-green"
@@ -71,6 +73,30 @@ const CertificateCard = ({ cert, index, isInView }) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          </a>
+
+          {/* Download Icon */}
+          <a
+            href={cert.downloadUrl}
+            download
+            className="p-4 bg-cyber-green/20 backdrop-blur-sm border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all shadow-[0_0_20px_#00FF88]"
+            onClick={(e) => e.stopPropagation()}
+            aria-label="Download certificate"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 text-cyber-green"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
               />
             </svg>
           </a>
@@ -102,25 +128,36 @@ const Certificates = () => {
 
   const certificates = [
     {
+      title: 'Introduction to Cyber Security',
+      issuer: 'TryHackMe',
+      date: '2024',
+      image: '/certificates/THM-BOLYF9EST6.png',
+      viewUrl: 'https://tryhackme.com/certificate/THM-BOLYF9EST6',
+      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BOLYF9EST6.pdf',
+    },
+    {
       title: 'Cyber Security 101',
       issuer: 'TryHackMe',
       date: '2024',
-      image: '/certificates/cyber_security 101.jpg',
-      link: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-TQTZOS8A5S.pdf',
-    },
-    {
-      title: 'Advent of Cyber',
-      issuer: 'TryHackMe',
-      date: '2024',
-      image: '/certificates/advert_of_cyber.jpg',
-      link: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-OOALWO7PPW.pdf',
+      image: '/certificates/THM-TQTZOS8A5S.png',
+      viewUrl: 'https://tryhackme.com/certificate/THM-TQTZOS8A5S',
+      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-TQTZOS8A5S.pdf',
     },
     {
       title: 'Pre Security',
       issuer: 'TryHackMe',
       date: '2024',
-      image: '/certificates/Pre_securty.jpg',
-      link: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WQ1IFMEP4C.pdf',
+      image: '/certificates/THM-WQ1IFMEP4C.png',
+      viewUrl: 'https://tryhackme.com/certificate/THM-WQ1IFMEP4C',
+      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WQ1IFMEP4C.pdf',
+    },
+    {
+      title: 'Advent of Cyber',
+      issuer: 'TryHackMe',
+      date: '2024',
+      image: '/certificates/THM-OOALWO7PPW.png',
+      viewUrl: 'https://tryhackme.com/certificate/THM-OOALWO7PPW',
+      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-OOALWO7PPW.pdf',
     },
   ]
 

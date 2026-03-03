@@ -11,6 +11,15 @@
     <meta name="author" content="Tsegazeab Fikre" />
     <meta name="theme-color" content="#00FF88" />
     
+    <!-- Performance: DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://cdn.emailjs.com" />
+    <link rel="dns-prefetch" href="https://api.emailjs.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.emailjs.com" />
+    
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -25,7 +34,7 @@
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       font-src 'self' https://fonts.gstatic.com;
       img-src 'self' data: https: blob:;
-      connect-src 'self' https://api.emailjs.com https://cdn.simpleicons.org https://imgs.search.brave.com;
+      connect-src 'self' https://api.emailjs.com https://cdn.simpleicons.org https://imgs.search.brave.com https://drive.google.com https://tryhackme.com https://tryhackme-certificates.s3-eu-west-1.amazonaws.com;
       frame-src 'none';
       object-src 'none';
       base-uri 'self';
@@ -33,21 +42,17 @@
     " />
     
     <title>Tsegazeab Fikre | Ethical Hacker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Anti-debugging script -->
+    <!-- Optimized Font Loading with display=swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap" rel="stylesheet" />
+    </noscript>
+    
+    <!-- Anti-debugging script (deferred) -->
     <script>
-      // Prevent iframe embedding
-      if (window.top !== window.self) {
-        window.top.location = window.self.location;
-      }
-      
-      // Clear console on load
-      if (typeof console !== 'undefined') {
-        console.clear();
-      }
+      if (window.top !== window.self) window.top.location = window.self.location;
+      if (typeof console !== 'undefined') console.clear();
     </script>
   </head>
   <body>

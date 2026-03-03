@@ -2,30 +2,47 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import DevToolsProtection from './utils/devtools-protection.js'
 
-// Initialize DevTools Protection
-const protection = new DevToolsProtection();
-protection.start();
+// Lazy load DevTools Protection (non-critical)
+const initDevToolsProtection = async () => {
+  const { default: DevToolsProtection } = await import('./utils/devtools-protection.js')
+  const protection = new DevToolsProtection()
+  protection.start()
+}
 
-// Disable text selection and drag
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.style.userSelect = 'none';
-  document.body.style.webkitUserSelect = 'none';
-  document.body.style.mozUserSelect = 'none';
-  document.body.style.msUserSelect = 'none';
+// Initialize after page load
+if (typeof window !== 'undefined') {
+  window.addEventListener('load', () => {
+    // Defer non-critical initialization
+    requestIdleCallback(() => {
+      initDevToolsProtection()
+    }, { timeout: 2000 })
+  })
+}
+
+// Optimize event listeners
+const setupEventListeners = () => {
+  document.body.style.userSelect = 'none'
+  document.body.style.webkitUserSelect = 'none'
   
-  // Prevent drag and drop
-  document.addEventListener('dragstart', (e) => e.preventDefault());
-  document.addEventListener('drop', (e) => e.preventDefault());
-  
-  // Prevent text selection on double click
-  document.addEventListener('selectstart', (e) => {
+  const preventDrag = (e) => e.preventDefault()
+  const preventSelect = (e) => {
     if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-      e.preventDefault();
+      e.preventDefault()
     }
-  });
-});
+  }
+  
+  document.addEventListener('dragstart', preventDrag, { passive: false })
+  document.addEventListener('drop', preventDrag, { passive: false })
+  document.addEventListener('selectstart', preventSelect, { passive: false })
+}
+
+// Setup after DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupEventListeners)
+} else {
+  setupEventListeners()
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -6,46 +6,33 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* Prevent text selection */
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
-/* Allow selection for input fields */
 input, textarea {
   -webkit-user-select: text;
   -moz-user-select: text;
-  -ms-user-select: text;
   user-select: text;
 }
 
 body {
   font-family: 'Rajdhani', sans-serif;
-  background: #000000;
-  color: white;
+  background: #000;
+  color: #fff;
   overflow-x: hidden;
   position: relative;
-  /* Prevent image dragging */
   -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
   user-drag: none;
 }
 
-/* Prevent image dragging */
 img {
   -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
   user-drag: none;
   pointer-events: none;
 }
 
-/* Allow pointer events for clickable images */
 a img, button img {
   pointer-events: auto;
 }
@@ -57,13 +44,13 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    linear-gradient(90deg, transparent 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%),
-    linear-gradient(0deg, transparent 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%),
+              linear-gradient(0deg, transparent 0%, rgba(0, 255, 136, 0.05) 50%, transparent 100%);
   background-size: 80px 80px;
   animation: gridMove 20s linear infinite;
   pointer-events: none;
   z-index: 0;
+  will-change: background-position;
 }
 
 body::after {
@@ -78,24 +65,17 @@ body::after {
   animation: pulse 8s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
+  will-change: opacity;
 }
 
 @keyframes gridMove {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-  100% {
-    background-position: 80px 80px, 80px 80px;
-  }
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 80px 80px, 80px 80px; }
 }
 
 @keyframes pulse {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 h1, h2, h3 {
@@ -113,4 +93,10 @@ h1, h2, h3 {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* Performance optimization: GPU acceleration for animations */
+.motion-safe {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }

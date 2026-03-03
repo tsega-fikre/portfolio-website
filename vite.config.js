@@ -8,40 +8,48 @@ export default defineConfig({
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true, // Remove console.log in production
-        drop_debugger: true, // Remove debugger statements
+        drop_console: true,
+        drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
+        passes: 2, // Multiple passes for better compression
       },
       mangle: {
-        toplevel: true, // Mangle top-level variable names
+        toplevel: true,
       },
       format: {
-        comments: false, // Remove all comments
+        comments: false,
       },
     },
-    // Split chunks for better caching
+    // Split chunks for better caching and performance
     rollupOptions: {
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
+          'router': ['react-router-dom'],
           'motion-vendor': ['framer-motion'],
+          'emailjs': ['@emailjs/browser'],
         },
-        // Obfuscate file names
         entryFileNames: 'assets/[hash].js',
         chunkFileNames: 'assets/[hash].js',
         assetFileNames: 'assets/[hash].[ext]',
       },
     },
-    // Source maps disabled for production
     sourcemap: false,
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000,
+    // Enable CSS code splitting
+    cssCodeSplit: true,
   },
-  // Disable server info in production
+  // Performance optimizations
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion'],
+  },
   server: {
     headers: {
       'X-Content-Type-Options': 'nosniff',
       'X-Frame-Options': 'DENY',
       'X-XSS-Protection': '1; mode=block',
+      'Cache-Control': 'public, max-age=31536000',
     },
   },
 })

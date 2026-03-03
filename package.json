@@ -7,6 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "optimize": "npm run optimize:images && npm run build",
+    "optimize:images": "node optimize-images-simple.cjs",
+    "optimize:webp": "node convert-to-webp.cjs",
+    "check": "node check-optimization.cjs",
+    "analyze": "vite build --mode analyze",
     "security-check": "echo 'Security features implemented: Input sanitization, Rate limiting, XSS prevention, Secure configuration'",
     "test-security": "echo 'Test XSS prevention by entering <script>alert(\"test\")</script> in forms'"
   },
