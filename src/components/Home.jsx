@@ -215,17 +215,9 @@ const Home = () => {
               onClick={scrollToProjects}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-8 py-3 bg-transparent border-2 border-cyber-green rounded-lg overflow-hidden"
+              className="px-8 py-3 bg-transparent border-2 border-cyber-green text-cyber-green font-semibold rounded-lg hover:bg-cyber-green hover:text-black transition-all duration-300"
             >
-              <span className="relative z-10 text-cyber-green font-semibold group-hover:text-cyber-dark transition-colors duration-300">
-                View My Work
-              </span>
-              <motion.div
-                className="absolute inset-0 bg-cyber-green"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
+              View My Work
             </motion.button>
           </motion.div>
 

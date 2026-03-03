@@ -47,13 +47,13 @@ const CertificateCard = ({ cert, index, isInView }) => {
             href={cert.viewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 bg-cyber-green/20 backdrop-blur-sm border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all shadow-[0_0_20px_#00FF88]"
+            className="group/icon p-4 bg-cyber-green/20 backdrop-blur-sm border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all shadow-[0_0_20px_#00FF88]"
             onClick={(e) => e.stopPropagation()}
             aria-label="View certificate"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-cyber-green"
+              className="h-6 w-6 text-cyber-green group-hover/icon:text-black transition-colors"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -76,13 +76,13 @@ const CertificateCard = ({ cert, index, isInView }) => {
           <a
             href={cert.downloadUrl}
             download
-            className="p-4 bg-cyber-green/20 backdrop-blur-sm border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all shadow-[0_0_20px_#00FF88]"
+            className="group/icon p-4 bg-cyber-green/20 backdrop-blur-sm border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all shadow-[0_0_20px_#00FF88]"
             onClick={(e) => e.stopPropagation()}
             aria-label="Download certificate"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 text-cyber-green"
+              className="h-6 w-6 text-cyber-green group-hover/icon:text-black transition-colors"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

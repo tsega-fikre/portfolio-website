@@ -99,7 +99,7 @@ const EmptyState = () => {
           onClick={() => navigate('/')}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 bg-transparent border-2 border-cyber-green text-cyber-green rounded-lg hover:bg-cyber-green hover:text-black transition-all font-semibold"
+          className="px-6 py-3 bg-transparent border-2 border-cyber-green text-cyber-green rounded-lg hover:bg-cyber-green hover:text-black transition-all font-semibold group"
         >
           Return Home
         </motion.button>

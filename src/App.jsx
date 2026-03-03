@@ -148,12 +148,12 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setShowResumeOptions(false)}
-                className="p-3 bg-cyber-green/20 border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all"
+                className="group/icon p-3 bg-cyber-green/20 border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all"
                 title="View Resume"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-cyber-green"
+                  className="h-5 w-5 text-cyber-green group-hover/icon:text-black transition-colors"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -177,12 +177,12 @@ function App() {
                 href="/certificates/resume.pdf"
                 download="resume.pdf"
                 onClick={() => setShowResumeOptions(false)}
-                className="p-3 bg-cyber-green/20 border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all"
+                className="group/icon p-3 bg-cyber-green/20 border-2 border-cyber-green rounded-full hover:bg-cyber-green hover:scale-110 transition-all"
                 title="Download Resume"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-cyber-green"
+                  className="h-5 w-5 text-cyber-green group-hover/icon:text-black transition-colors"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
