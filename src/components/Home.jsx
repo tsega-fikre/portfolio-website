@@ -134,10 +134,25 @@ const Home = () => {
         ))}
       </div>
 
-      {/* Simplified gradient background - removed heavy 3D Canvas */}
+      {/* Watery jelly blob animations */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-cyber-dark" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyber-green/10 rounded-full blur-3xl" />
+        
+        {/* Animated blob shapes with watery jelly effect */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyber-green/15 blur-3xl"
+          style={{ animation: 'blob 12s ease-in-out infinite' }}
+        />
+        
+        <div
+          className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-cyber-green/10 blur-3xl"
+          style={{ animation: 'blob-reverse 15s ease-in-out infinite' }}
+        />
+        
+        <div
+          className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-cyber-green/12 blur-3xl"
+          style={{ animation: 'blob 18s ease-in-out infinite 2s' }}
+        />
       </div>
 
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">

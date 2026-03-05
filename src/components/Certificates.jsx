@@ -147,12 +147,12 @@ const Certificates = () => {
       downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WQ1IFMEP4C.pdf',
     },
     {
-      title: 'Advent of Cyber',
+      title: 'Web Fundamentals',
       issuer: 'TryHackMe',
       date: '2024',
-      image: '/certificates/THM-OOALWO7PPW.png',
-      viewUrl: 'https://tryhackme.com/certificate/THM-OOALWO7PPW',
-      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-OOALWO7PPW.pdf',
+      image: '/certificates/THM-I9ZD75FXL0.png',
+      viewUrl: 'https://tryhackme.com/certificate/THM-I9ZD75FXL0',
+      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-I9ZD75FXL0.pdf',
     },
   ]
 
