@@ -67,17 +67,31 @@ const ProjectCard = ({ project, index = 0 }) => {
       />
 
       {/* Project Image */}
-      <div className="relative h-64 overflow-hidden">
-        <motion.img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.4 }}
-          onError={(e) => {
-            e.target.src = `https://via.placeholder.com/600x400/0a0a0a/00FF88?text=${encodeURIComponent(project.title)}`
-          }}
-        />
+      <div className="relative h-64 overflow-hidden bg-black/60">
+        {project.image ? (
+          <motion.img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.4 }}
+            onError={(e) => {
+              e.target.src = `https://via.placeholder.com/600x400/0a0a0a/00FF88?text=${encodeURIComponent(project.title)}`
+            }}
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-3">
+            <motion.div
+              animate={{ opacity: [0.4, 1, 0.4] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-5xl"
+            >
+              🚧
+            </motion.div>
+            <span className="text-cyber-green font-bold text-lg tracking-widest">COMING SOON</span>
+            <span className="text-gray-500 text-sm">Currently in Development</span>
+          </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
 
         {/* Status Badge */}
