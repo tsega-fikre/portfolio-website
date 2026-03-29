@@ -87,7 +87,7 @@ export const projects = [
     title: 'Ethiocypher – Password Cracking & Security Analysis Tool',
     description: 'A forthcoming advanced cybersecurity tool focused on password cracking techniques and security analysis, simulating real-world attack scenarios for educational purposes.',
     longDescription: 'A forthcoming advanced cybersecurity tool focused on password cracking techniques and security analysis. This project will simulate real-world attack scenarios to demonstrate how weak passwords can be compromised. It is being designed as an educational and ethical hacking resource to help users understand password vulnerabilities and improve defensive strategies.',
-    image: null,
+    image: '/projects/EthioCypher.png',
     link: '#',
     github: null,
     status: 'Coming Soon',

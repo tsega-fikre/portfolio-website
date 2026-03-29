@@ -19,6 +19,106 @@ const ProjectDetail = () => {
     return null
   }
 
+  // Coming Soon project — same layout as normal but with coming soon overlay on image
+  if (project.status === 'Coming Soon') {
+    return (
+      <div className="relative min-h-screen pt-24 pb-20 px-4 overflow-hidden">
+        <div className="absolute top-40 left-20 w-72 h-72 bg-cyber-green/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-40 right-20 w-96 h-96 bg-cyber-green/5 rounded-full blur-3xl animate-pulse" />
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <motion.button
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            onClick={() => navigate('/all-projects')}
+            className="mb-8 inline-flex items-center gap-2 px-6 py-3 bg-black/50 border border-cyber-green/30 text-cyber-green rounded-lg hover:border-cyber-green hover:bg-cyber-green/10 hover:shadow-[0_0_20px_rgba(0,255,136,0.3)] transition-all"
+          >
+            <span className="text-xl">←</span> Back to Projects
+          </motion.button>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Left — Info */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-8">
+              <div>
+                <span className="px-3 py-1 bg-orange-500/20 text-orange-400 border border-orange-500/50 rounded-full text-sm font-semibold">
+                  🚧 Currently in Development
+                </span>
+                <h1 className="relative inline-block text-4xl md:text-5xl font-bold text-cyber-green mt-4 mb-4">
+                  {project.title}
+                  <motion.span
+                    className="absolute inset-0 text-cyber-green/50"
+                    animate={{ x: [-2, 2, -2], opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 0.2, repeat: Infinity }}
+                  >
+                    {project.title}
+                  </motion.span>
+                </h1>
+                <p className="text-xl text-gray-300 leading-relaxed">{project.longDescription}</p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {project.skills.map((skill) => (
+                  <span key={skill} className="px-4 py-2 bg-cyber-green/20 border border-cyber-green/50 rounded-full text-cyber-green font-semibold text-sm">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+
+              {project.features && (
+                <div>
+                  <h2 className="text-2xl font-bold text-cyber-green mb-4">✨ Planned Features</h2>
+                  <ul className="space-y-3">
+                    {project.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-3 text-gray-300">
+                        <span className="text-cyber-green text-xl mt-1">▹</span>
+                        <span className="text-lg">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {project.technologies && (
+                <div>
+                  <h2 className="text-2xl font-bold text-cyber-green mb-4">🛠️ Planned Technologies</h2>
+                  <div className="flex flex-wrap gap-3">
+                    {project.technologies.map((tech) => (
+                      <span key={tech} className="px-4 py-2 bg-black/50 border border-cyber-green/30 rounded-lg text-gray-300 hover:border-cyber-green hover:text-cyber-green transition-all">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </motion.div>
+
+            {/* Right — Image with Coming Soon overlay */}
+            <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
+              <div className="relative rounded-xl overflow-hidden border-2 border-cyber-green/30">
+                <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
+                <div className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center gap-4">
+                  <motion.div
+                    animate={{ scale: [1, 1.15, 1], rotate: [0, -5, 5, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="text-6xl"
+                  >
+                    🚧
+                  </motion.div>
+                  <motion.span
+                    animate={{ opacity: [0.6, 1, 0.6] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="text-cyber-green font-bold text-3xl tracking-widest"
+                  >
+                    COMING SOON
+                  </motion.span>
+                  <span className="text-gray-400 text-sm">Currently in Development</span>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    )
+  }
   // Prepare gallery images – if no gallery, use main image
   const galleryImages = project.gallery && project.gallery.length > 0 
     ? project.gallery 
