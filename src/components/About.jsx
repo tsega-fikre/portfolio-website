@@ -86,7 +86,7 @@ const About = () => {
         <div className="text-center mb-12">
           <motion.h2
             className="text-4xl md:text-5xl font-bold inline-block text-cyber-green relative"
-            animate={isInView ? { textShadow: ['0 0 10px #00FF88', '0 0 30px #00FF88', '0 0 10px #00FF88'] } : {}}
+            animate={isInView ? { textShadow: ['0 0 10px #1E90FF', '0 0 30px #1E90FF', '0 0 10px #1E90FF'] } : {}}
             transition={{ duration: 2, repeat: Infinity }}
           >
             About Me

@@ -21,7 +21,7 @@ const MatrixRain = () => {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#00FF88';
+      ctx.fillStyle = '#1E90FF';
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -29,7 +29,7 @@ const MatrixRain = () => {
         const x = i * fontSize;
         const y = drops[i] * fontSize;
 
-        ctx.fillStyle = 'rgba(0, 255, 136, 0.3)';
+        ctx.fillStyle = 'rgba(30, 144, 255, 0.3)';
         ctx.fillText(text, x, y);
 
         if (y > canvas.height && Math.random() > 0.975) {

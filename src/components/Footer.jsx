@@ -36,13 +36,13 @@ const Footer = () => {
       name: 'TryHackMe', 
       url: 'https://tryhackme.com/p/Tsega001', 
       icon: 'tryhackme',
-      color: '#00FF88'
+      color: '#1E90FF'
     },
     { 
       name: 'HackTheBox', 
       url: 'https://app.hackthebox.com/profile/Tsega01', 
       icon: 'hackthebox',
-      color: '#9FEF00'
+      color: '#1E90FF'
     },
     { 
       name: 'Telegram', 
@@ -71,7 +71,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-cyber-dark border-t border-cyber-green/30 py-12 overflow-hidden">
       {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00FF8810_1px,transparent_1px),linear-gradient(to_bottom,#00FF8810_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1E90FF10_1px,transparent_1px),linear-gradient(to_bottom,#1E90FF10_1px,transparent_1px)] bg-[size:40px_40px]" />
       
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-transparent" />
@@ -107,7 +107,7 @@ const Footer = () => {
                 <img 
                   src={link.customLogo || getIconUrl(link.icon, link.color)}
                   alt={link.name}
-                  className="relative w-8 h-8 transition-all group-hover:drop-shadow-[0_0_10px_#00FF88]"
+                  className="relative w-8 h-8 transition-all group-hover:drop-shadow-[0_0_10px_#1E90FF]"
                   onError={(e) => {
                     // Fallback to simpleicons without color if fails
                     e.target.src = `https://cdn.simpleicons.org/${link.icon}`
@@ -147,9 +147,9 @@ const Footer = () => {
           <motion.p
             animate={{ 
               textShadow: [
-                '0 0 5px #00FF88', 
-                '0 0 15px #00FF88', 
-                '0 0 5px #00FF88'
+                '0 0 5px #1E90FF', 
+                '0 0 15px #1E90FF', 
+                '0 0 5px #1E90FF'
               ] 
             }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -169,7 +169,7 @@ const Footer = () => {
             }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="fixed bottom-8 right-8 p-3 bg-cyber-green text-black rounded-full shadow-[0_0_20px_#00FF88] hover:shadow-[0_0_30px_#00FF88] transition-shadow z-50"
+            className="fixed bottom-8 right-8 p-3 bg-cyber-green text-black rounded-full shadow-[0_0_20px_#1E90FF] hover:shadow-[0_0_30px_#1E90FF] transition-shadow z-50"
             aria-label="Back to top"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -186,8 +186,8 @@ const Footer = () => {
         .bg-scanline {
           background: repeating-linear-gradient(
             0deg,
-            rgba(0, 255, 136, 0.02) 0px,
-            rgba(0, 255, 136, 0.02) 2px,
+            rgba(30, 144, 255, 0.02) 0px,
+            rgba(30, 144, 255, 0.02) 2px,
             transparent 2px,
             transparent 4px
           );

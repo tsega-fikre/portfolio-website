@@ -26,7 +26,7 @@ const EmptyState = () => {
       className="relative flex flex-col items-center justify-center min-h-[500px] py-20 px-4 overflow-hidden"
     >
       {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#00FF8810_1px,transparent_1px),linear-gradient(to_bottom,#00FF8810_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1E90FF10_1px,transparent_1px),linear-gradient(to_bottom,#1E90FF10_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       {/* Floating orbs */}
       <motion.div
@@ -54,9 +54,9 @@ const EmptyState = () => {
           animate={{
             scale: [1, 1.05, 1],
             filter: [
-              'drop-shadow(0 0 10px #00FF88)',
-              'drop-shadow(0 0 30px #00FF88)',
-              'drop-shadow(0 0 10px #00FF88)',
+              'drop-shadow(0 0 10px #1E90FF)',
+              'drop-shadow(0 0 30px #1E90FF)',
+              'drop-shadow(0 0 10px #1E90FF)',
             ],
           }}
           transition={{
@@ -112,8 +112,8 @@ const EmptyState = () => {
         .bg-scanline {
           background: repeating-linear-gradient(
             0deg,
-            rgba(0, 255, 136, 0.02) 0px,
-            rgba(0, 255, 136, 0.02) 2px,
+            rgba(30, 144, 255, 0.02) 0px,
+            rgba(30, 144, 255, 0.02) 2px,
             transparent 2px,
             transparent 4px
           );

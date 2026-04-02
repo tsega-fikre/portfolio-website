@@ -116,9 +116,9 @@ function App() {
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyber-green to-green-400 text-black font-bold rounded-lg overflow-hidden group"
             animate={{
               boxShadow: [
-                '0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3)',
-                '0 0 15px rgba(0, 255, 136, 0.6), 0 0 30px rgba(0, 255, 136, 0.4)',
-                '0 0 10px rgba(0, 255, 136, 0.5), 0 0 20px rgba(0, 255, 136, 0.3)',
+                '0 0 10px rgba(30, 144, 255, 0.5), 0 0 20px rgba(30, 144, 255, 0.3)',
+                '0 0 15px rgba(30, 144, 255, 0.6), 0 0 30px rgba(30, 144, 255, 0.4)',
+                '0 0 10px rgba(30, 144, 255, 0.5), 0 0 20px rgba(30, 144, 255, 0.3)',
               ],
             }}
             transition={{

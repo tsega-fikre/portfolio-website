@@ -53,7 +53,7 @@ const CertCard = ({ cert, index }) => {
       </div>
       <motion.div
         className="absolute inset-0 rounded-xl pointer-events-none"
-        animate={hovered ? { boxShadow: '0 0 30px #00FF88, 0 0 60px #00FF88' } : { boxShadow: '0 0 0 #00FF88' }}
+        animate={hovered ? { boxShadow: '0 0 30px #1E90FF, 0 0 60px #1E90FF' } : { boxShadow: '0 0 0 #1E90FF' }}
         transition={{ duration: 0.3 }}
       />
     </motion.div>

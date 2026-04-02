@@ -211,7 +211,7 @@ const ProjectDetail = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-cyber-green text-black font-bold rounded-lg hover:bg-cyber-green/80 transition-all hover:shadow-[0_0_30px_#00FF88] group"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-cyber-green text-black font-bold rounded-lg hover:bg-cyber-green/80 transition-all hover:shadow-[0_0_30px_#1E90FF] group"
               >
                 Visit Project
                 <span className="group-hover:translate-x-1 transition-transform">↗</span>
@@ -309,7 +309,7 @@ const ProjectDetail = () => {
                     onClick={() => setSelectedImage(idx)}
                     className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                       selectedImage === idx
-                        ? 'border-cyber-green shadow-[0_0_15px_#00FF88]'
+                        ? 'border-cyber-green shadow-[0_0_15px_#1E90FF]'
                         : 'border-cyber-green/30 opacity-70 hover:opacity-100'
                     }`}
                   >

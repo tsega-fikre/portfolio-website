@@ -82,7 +82,7 @@ const Navbar = () => {
                 className="relative flex items-center gap-2 text-white hover:text-cyber-green transition-colors group px-3 py-2"
                 whileHover={{
                   scale: 1.1,
-                  textShadow: '0 0 8px #00FF88',
+                  textShadow: '0 0 8px #1E90FF',
                   transition: { type: 'spring', stiffness: 400 },
                 }}
                 whileTap={{ scale: 0.95 }}

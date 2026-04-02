@@ -33,7 +33,7 @@ const SkillItem = ({ skill, index, isInView }) => {
           initial={{ width: 0 }}
           animate={isInView ? { width: `${skill.level}%` } : {}}
           transition={{ delay: index * 0.1 + 0.3, duration: 1, ease: 'easeOut' }}
-          className="h-full bg-gradient-to-r from-cyber-green to-green-400 rounded-full shadow-[0_0_10px_#00FF88]"
+          className="h-full bg-gradient-to-r from-cyber-green to-green-400 rounded-full shadow-[0_0_10px_#1E90FF]"
         />
       </div>
 
@@ -187,9 +187,9 @@ const Skills = () => {
                 transition={{ delay: 0.9 + i * 0.02 }}
                 whileHover={{
                   scale: 1.1,
-                  backgroundColor: '#00FF88',
+                  backgroundColor: '#1E90FF',
                   color: '#0a0a0a',
-                  boxShadow: '0 0 20px #00FF88',
+                  boxShadow: '0 0 20px #1E90FF',
                 }}
                 className="px-4 py-2 bg-cyber-green/10 border border-cyber-green/50 rounded-full text-cyber-green text-sm cursor-default transition-all"
               >

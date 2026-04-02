@@ -6,12 +6,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cyber-green': '#00FF88',
+        'cyber-green': '#1E90FF',
         'cyber-dark': '#000000',
       },
       boxShadow: {
-        'neon': '0 0 10px #00FF88, 0 0 20px #00FF88',
-        'neon-lg': '0 0 20px #00FF88, 0 0 40px #00FF88',
+        'neon': '0 0 10px #1E90FF, 0 0 20px #1E90FF',
+        'neon-lg': '0 0 20px #1E90FF, 0 0 40px #1E90FF',
       },
     },
   },
