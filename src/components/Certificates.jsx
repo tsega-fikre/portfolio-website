@@ -1,5 +1,51 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+const certificates = [
+  {
+    title: 'Introduction to Cyber Security',
+    issuer: 'TryHackMe',
+    date: '2024',
+    image: '/certificates/THM-BOLYF9EST6.png',
+    viewUrl: 'https://tryhackme.com/certificate/THM-BOLYF9EST6',
+    downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BOLYF9EST6.pdf',
+  },
+  {
+    title: 'Cyber Security 101',
+    issuer: 'TryHackMe',
+    date: '2024',
+    image: '/certificates/THM-TQTZOS8A5S.png',
+    viewUrl: 'https://tryhackme.com/certificate/THM-TQTZOS8A5S',
+    downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-TQTZOS8A5S.pdf',
+  },
+  {
+    title: 'Pre Security',
+    issuer: 'TryHackMe',
+    date: '2024',
+    image: '/certificates/THM-WQ1IFMEP4C.png',
+    viewUrl: 'https://tryhackme.com/certificate/THM-WQ1IFMEP4C',
+    downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WQ1IFMEP4C.pdf',
+  },
+  {
+    title: 'Web Fundamentals',
+    issuer: 'TryHackMe',
+    date: '2024',
+    image: '/certificates/THM-I9ZD75FXL0.png',
+    viewUrl: 'https://tryhackme.com/certificate/THM-I9ZD75FXL0',
+    downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-I9ZD75FXL0.pdf',
+  },
+  {
+    title: 'Web App Penetration Tester',
+    issuer: 'TryHackMe',
+    date: '2024',
+    image: '/certificates/THM-YVJAYPMJTK.png',
+    viewUrl: 'https://tryhackme.com/certificate/THM-YVJAYPMJTK',
+    downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-YVJAYPMJTK.pdf',
+  },
+]
+
+export { certificates }
 
 const CertificateCard = ({ cert, index, isInView }) => {
   const [hovered, setHovered] = useState(false)
@@ -117,44 +163,12 @@ const CertificateCard = ({ cert, index, isInView }) => {
   )
 }
 
-const Certificates = () => {
+const Certificates = ({ limit = 3, showViewAll = true }) => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const navigate = useNavigate()
 
-  const certificates = [
-    {
-      title: 'Introduction to Cyber Security',
-      issuer: 'TryHackMe',
-      date: '2024',
-      image: '/certificates/THM-BOLYF9EST6.png',
-      viewUrl: 'https://tryhackme.com/certificate/THM-BOLYF9EST6',
-      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-BOLYF9EST6.pdf',
-    },
-    {
-      title: 'Cyber Security 101',
-      issuer: 'TryHackMe',
-      date: '2024',
-      image: '/certificates/THM-TQTZOS8A5S.png',
-      viewUrl: 'https://tryhackme.com/certificate/THM-TQTZOS8A5S',
-      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-TQTZOS8A5S.pdf',
-    },
-    {
-      title: 'Pre Security',
-      issuer: 'TryHackMe',
-      date: '2024',
-      image: '/certificates/THM-WQ1IFMEP4C.png',
-      viewUrl: 'https://tryhackme.com/certificate/THM-WQ1IFMEP4C',
-      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-WQ1IFMEP4C.pdf',
-    },
-    {
-      title: 'Web Fundamentals',
-      issuer: 'TryHackMe',
-      date: '2024',
-      image: '/certificates/THM-I9ZD75FXL0.png',
-      viewUrl: 'https://tryhackme.com/certificate/THM-I9ZD75FXL0',
-      downloadUrl: 'https://tryhackme-certificates.s3-eu-west-1.amazonaws.com/THM-I9ZD75FXL0.pdf',
-    },
-  ]
+  const displayed = limit ? certificates.slice(0, limit) : certificates
 
   return (
     <section
@@ -201,10 +215,28 @@ const Certificates = () => {
 
         {/* Certificates Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certificates.map((cert, index) => (
+          {displayed.map((cert, index) => (
             <CertificateCard key={cert.title} cert={cert} index={index} isInView={isInView} />
           ))}
         </div>
+
+        {/* View All button */}
+        {showViewAll && certificates.length > limit && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5 }}
+            className="text-center mt-12"
+          >
+            <button
+              onClick={() => navigate('/all-certificates')}
+              className="inline-flex items-center gap-2 px-8 py-3 bg-cyber-green text-black font-bold rounded-lg hover:bg-cyber-green/80 transition-all text-lg group"
+            >
+              View All Certificates
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+          </motion.div>
+        )}
       </motion.div>
 
       <style jsx>{`

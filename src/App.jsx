@@ -7,6 +7,7 @@ import About from './components/About'
 import Skills from './components/Skills'
 import ProjectsGallery from './components/ProjectsGallery'
 import AllProjectsPage from './components/AllProjectsPage'
+import AllCertificatesPage from './components/AllCertificatesPage'
 import ProjectDetail from './components/ProjectDetail'
 import Certificates from './components/Certificates'
 import Footer from './components/Footer'
@@ -93,6 +94,14 @@ function App() {
               </>
             } />
             
+            {/* All Certificates page */}
+            <Route path="/all-certificates" element={
+              <>
+                <AllCertificatesPage />
+                <Footer />
+              </>
+            } />
+
             {/* Catch-all redirect to home */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
