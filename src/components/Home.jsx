@@ -235,33 +235,6 @@ const Home = () => {
               View My Work
             </motion.button>
           </motion.div>
-
-          {/* Social links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="flex justify-center gap-6 flex-wrap"
-          >
-            {socialLinks.map((link) => (
-              <motion.button
-                key={link.name}
-                onClick={() => handleLinkClick(link.url, link.name)}
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.9 }}
-                className="transition-all cursor-pointer relative group"
-                title={link.name}
-                aria-label={`Visit ${link.name} profile`}
-              >
-                <img 
-                  src={link.logo} 
-                  alt={link.name}
-                  className="relative w-10 h-10 hover:drop-shadow-[0_0_10px_#00FF88] cursor-pointer"
-                  loading="lazy"
-                />
-              </motion.button>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
 
