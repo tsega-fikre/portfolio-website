@@ -50,7 +50,6 @@ const About = () => {
     { name: 'Linux & Scripting', level: 90 },
     { name: 'Web Security', level: 70 },
     { name: 'Cryptography', level: 65 },
-    { name: 'Incident Response', level: 60 },
   ]
 
   // Tags remain the same
@@ -205,6 +204,26 @@ const About = () => {
                 reading about the latest threats, and building projects that enhance my technical skills.
                 I'm always eager to collaborate, learn, and grow in this ever-evolving field.
               </p>
+            </motion.div>
+
+            {/* Leadership */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ delay: 0.65 }}
+              className="border border-cyber-green/30 rounded-xl p-4 bg-cyber-green/5"
+            >
+              <h3 className="text-cyber-green font-bold text-lg mb-2">🏛️ Leadership & Community</h3>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2 text-gray-300">
+                  <span className="text-cyber-green mt-1">▹</span>
+                  <span><span className="text-cyber-green font-semibold">Vice-Chairperson</span> — Jimma University Cyber Club</span>
+                </div>
+                <div className="flex items-start gap-2 text-gray-300">
+                  <span className="text-cyber-green mt-1">▹</span>
+                  <span><span className="text-cyber-green font-semibold">Founding Member & Leader</span> — Jimma University Cyber Club</span>
+                </div>
+              </div>
             </motion.div>
 
             {/* Skills section */}

@@ -8,6 +8,8 @@ const Home = () => {
     'Ethical Hacker',
     'Penetration Tester',
     'Security Researcher',
+    'Vice-Chairperson Of Jimma University Cyber Club',
+    'Founding Member & Leader',
   ]
   const [roleIndex, setRoleIndex] = useState(0)
   const [displayText, setDisplayText] = useState('')
