@@ -126,7 +126,7 @@ function App() {
             >
               {/* View Icon */}
               <a
-                href="https://drive.google.com/file/d/1ETCYTrZAVjtQjlYwDm5m1z-jlsj7640r/view?usp=sharing"
+                href="https://mega.nz/file/5iN22DpT#P7h5M14oBlpu7cEVFinD50G_weOEUEzj3ScKBDZrCEE"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setShowResumeOptions(false)}
